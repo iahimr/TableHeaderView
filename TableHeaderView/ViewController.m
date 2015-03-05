@@ -23,7 +23,6 @@
     self.navigationController.navigationBar.translucent = YES;
     
     UIView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] firstObject];
-    //headerView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.tableView.tableHeaderView = headerView;
     self.tableView.tableHeaderView.backgroundColor = [UIColor purpleColor];
