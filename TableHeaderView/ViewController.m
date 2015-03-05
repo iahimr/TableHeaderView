@@ -23,9 +23,25 @@
     self.navigationController.navigationBar.translucent = YES;
     
     UIView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] firstObject];
-    
     self.tableView.tableHeaderView = headerView;
     self.tableView.tableHeaderView.backgroundColor = [UIColor purpleColor];
+    [self sizeHeaderToFit];
+}
+
+- (void)sizeHeaderToFit {
+    UIView *header = self.tableView.tableHeaderView;
+    
+    [header setNeedsLayout];
+    [header layoutIfNeeded];
+    
+    CGSize headerSize = [header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGFloat height = headerSize.height;
+    CGRect frame = header.frame;
+    
+    frame.size.height = height;
+    header.frame = frame;
+    
+    self.tableView.tableHeaderView = header;
 }
 
 - (void)didReceiveMemoryWarning {
